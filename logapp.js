@@ -48,6 +48,14 @@ app.get("/getvistors", async(request, response) => {
     }
 });
 
+app.get('/deleteall', async (request, response) => {
+    try {
+        await visitorModel.deleteMany({});
+        response.send({ message: 'All visitors have been deleted.' });
+    } catch (error) {
+        response.status(500).send({ error: 'An error occurred while deleting visitors.' });
+    }
+});
 
 
 
